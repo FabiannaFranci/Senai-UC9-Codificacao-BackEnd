@@ -44,8 +44,6 @@ Thread.Sleep(500);
     switch (opcoesDoMenu)
     {
         case "1":
-         Endereco novoEndPF = new Endereco();
-        PessoaFisica novaPF = new PessoaFisica();
         PessoaFisica metodosPF = new PessoaFisica();
         string? opcaoMenuPF;
         do
@@ -62,7 +60,8 @@ Escolha uma opção abaixo
 
             switch(opcaoMenuPF){
                 case "1":
-
+                Endereco novoEndPF = new Endereco();
+        PessoaFisica novaPF = new PessoaFisica();
                 Console.Write("Digite seu nome: ");
                 novaPF.Nome = Console.ReadLine();
                 Console.Write("Digite seu CPF: ");
@@ -142,16 +141,17 @@ Escolha uma opção abaixo
                     Data de Nascimento: {pf.DataDeNascimento}
                     Rendimento: {pf.Rendimento}
                     Imposto à pagar: {metodosPF.PagarImposto(pf.Rendimento).ToString("C", new CultureInfo("pt-BR"))}
-                    Endereço Comercial?: {(novaPF.Endereco!.EnderecoComercial? "Sim" : "Não")}
+                    Endereço Comercial?: {(pf.Endereco!.EnderecoComercial? "Sim" : "Não")}
                     ");
                     }
+                    Console.WriteLine("Aperte ENTER para continuar");
+                    Console.ReadLine();
+                    
                 
                 } 
                 else{
                     Console.WriteLine("Lista Vazia");
                 }
-                Console.WriteLine("Aperte ENTER para continuar");
-                Console.ReadLine();
                 
                           
                 break;
@@ -162,8 +162,7 @@ Escolha uma opção abaixo
     
         case "2":
         string? opcaoMenuPJ;
-        Endereco novoEndPJ = new Endereco();
-        PessoaJuridica novaPJ = new PessoaJuridica();
+        
         PessoaJuridica metodosPJ = new PessoaJuridica();
         do
         {
@@ -179,7 +178,8 @@ Escolha uma opção abaixo
             switch (opcaoMenuPJ)
             {
                 case "1":
-    
+                Endereco novoEndPJ = new Endereco();
+                PessoaJuridica novaPJ = new PessoaJuridica();
 
                 Console.WriteLine("Digite seu nome: ");
                 novaPJ.Nome = Console.ReadLine();
@@ -212,7 +212,7 @@ Escolha uma opção abaixo
                 do
                 {
                     
-                    Console.WriteLine("Endereço é comercial?: ");
+                    Console.WriteLine("Endereço é comercial? [S/N]: ");
                     verificarSeEnderecoEComercialPJ = Console.ReadLine()!.ToLower();
                     if(verificarSeEnderecoEComercialPJ == "s"){
                         novoEndPJ.EnderecoComercial = true;
